@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2>Coupon Submitted Successfully</h2>
+
+    <div class="card">
+        <div class="card-body">
+            <h4>Coupon Details</h4>
+            <p><strong>Stake:</strong> {{ coupon.stake }}</p>
+            <p><strong>Total Odds:</strong> {{ coupon.total_odds }}</p>
+            <p><strong>Potential Winnings:</strong> {{ coupon.potential_winnings }}</p>
+
+            <!-- Status with badge styling -->
+            <p><strong>Status:</strong>
+                <span class="badge
+                    {% if coupon.status == 'Won' %}
+                        badge-success
+                    {% elif coupon.status == 'Lost' %}
+                        badge-danger
+                    {% else %}
+                        badge-secondary
+                    {% endif %}">
+                    {{ coupon.status }}
+                </span>
+            </p>
+
+            <h5>Bet Selections</h5>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Match</th>
+                        <th>Selected Event</th>
+                        <th>Odds</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for selection in bet_selections %}
+                    <tr>
+                        <td>{{ selection.match.team1 }} vs {{ selection.match.team2 }}</td>
+                        <td>{{ selection.event }}</td>
+                        <td>{{ selection.odds }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{% url 'match_list' %}" class="btn btn-primary mt-3">Create Another Coupon</a>
+</div>
+
+{% endblock %}

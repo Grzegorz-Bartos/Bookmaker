@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container mt-5">
+    <h2>All Coupons</h2>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Stake</th>
+                <th>Total Odds</th>
+                <th>Potential Winnings</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for coupon in coupons %}
+            <tr>
+                <td>{{ coupon.id }}</td>
+                <td>{{ coupon.stake }}</td>
+                <td>{{ coupon.total_odds }}</td>
+                <td>{{ coupon.potential_winnings }}</td>
+                <td>
+                    <span class="badge
+                        {% if coupon.status == 'Won' %}badge-success
+                        {% elif coupon.status == 'Lost' %}badge-danger
+                        {% else %}badge-secondary{% endif %}">
+                        {{ coupon.status }}
+                    </span>
+                </td>
+                <td>{{ coupon.created_at }}</td>
+                <td>
+                    <a href="{% url 'coupon' coupon.id %}" class="btn btn-primary btn-sm">View</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

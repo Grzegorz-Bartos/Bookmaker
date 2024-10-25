@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mt-5">
+    <h2>CSV File Uploaded Successfully!</h2>
+    <a href="{% url 'match_list' %}" class="btn btn-success">View Matches</a>
+</div>
+{% endblock %}

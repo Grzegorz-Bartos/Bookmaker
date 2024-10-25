@@ -1,0 +1,30 @@
+.match-odds {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 80px;
+}
+.match-odds:hover {
+    background-color: #f0f0f0;
+}
+.bet-slip {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ccc;
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 300px;
+    max-height: 890px;
+    overflow-y: auto;
+    padding-right: 10px; /* Padding to avoid content hiding behind scrollbar */
+}
+.bet-slip-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+#date-filter {
+    max-width: 300px;
+    margin-bottom: 20px;
+}
