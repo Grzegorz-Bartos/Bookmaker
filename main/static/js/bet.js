@@ -18,7 +18,7 @@ document.querySelectorAll('.match-odds').forEach(oddElement => {
 
         // Add to the bet slip array
         betSlip.push({ matchId, match, event, odds }); // Include matchId
-
+        this.classList.add('selected-bet');
         // Update the bet slip UI
         updateBetSlip();
     });

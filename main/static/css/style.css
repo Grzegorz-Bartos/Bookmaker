@@ -28,3 +28,8 @@
     max-width: 300px;
     margin-bottom: 20px;
 }
+.selected-bet {
+    background-color: #cce5ff;
+    color: #004085;
+    font-weight: bold;
+}
