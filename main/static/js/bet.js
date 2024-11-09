@@ -57,8 +57,21 @@ function updateBetSlip() {
 
 // Function to remove a bet from the bet slip
 function removeBet(index) {
-    betSlip.splice(index, 1); // Remove the bet at the specified index
-    updateBetSlip(); // Update the UI after removing the bet
+    // Get the match ID of the bet being removed
+    const removedBet = betSlip[index];
+    const matchId = removedBet.matchId;
+
+    // Remove the bet at the specified index from the bet slip
+    betSlip.splice(index, 1);
+
+    // Update the UI after removing the bet
+    updateBetSlip();
+
+    // Revert the appearance of all match odds for the removed match
+    document.querySelectorAll(`.match-odds[data-match-id="${matchId}"]`).forEach(element => {
+        element.classList.remove('selected-bet'); // Remove the highlight class
+    });
+
 }
 
 // Function to calculate potential winnings based on stake and total odds
